@@ -11,7 +11,7 @@ import {FruitColorService} from './fruitColors.service';
 })
 
 export class FruitEditComponent implements OnInit {
-  model : Fruit;
+  model =new Fruit();
   colors= new Array<Fruit>();
   onSubmit(){
 
@@ -26,7 +26,7 @@ export class FruitEditComponent implements OnInit {
   ngOnInit(){
     let id= this._routeParams.get('id');
     this.model.id=id;
-    console.log('id is ',id);
+    
     this._colors.getColors().subscribe(x=> this.colors=x);
   }
 }

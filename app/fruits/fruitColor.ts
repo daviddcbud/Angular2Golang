@@ -1,4 +1,4 @@
-export interface FruitColor {
+export class FruitColor {
   id:string;
   name:string;
 }

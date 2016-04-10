@@ -1,6 +1,5 @@
-System.register(["angular2/core", 'angular2/router', "./fruits.service", '../cacheBuster', './fruitColors.service'], function(exports_1, context_1) {
+System.register(["angular2/core", './fruit', 'angular2/router', "./fruits.service", '../cacheBuster', './fruitColors.service'], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,12 +9,15 @@ System.register(["angular2/core", 'angular2/router', "./fruits.service", '../cac
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, fruits_service_1, cacheBuster_1, fruitColors_service_1;
+    var core_1, fruit_1, router_1, fruits_service_1, cacheBuster_1, fruitColors_service_1;
     var FruitEditComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (fruit_1_1) {
+                fruit_1 = fruit_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -35,6 +37,7 @@ System.register(["angular2/core", 'angular2/router', "./fruits.service", '../cac
                     this._routeParams = _routeParams;
                     this._service = _service;
                     this._colors = _colors;
+                    this.model = new fruit_1.Fruit();
                     this.colors = new Array();
                 }
                 FruitEditComponent.prototype.onSubmit = function () {
@@ -44,7 +47,6 @@ System.register(["angular2/core", 'angular2/router', "./fruits.service", '../cac
                     var _this = this;
                     var id = this._routeParams.get('id');
                     this.model.id = id;
-                    console.log('id is ', id);
                     this._colors.getColors().subscribe(function (x) { return _this.colors = x; });
                 };
                 FruitEditComponent = __decorate([

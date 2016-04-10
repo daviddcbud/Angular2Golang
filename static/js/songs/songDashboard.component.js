@@ -1,6 +1,5 @@
-System.register(['angular2/core', 'angular2/router', '../cacheBuster', "./songsSearch.component"], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../cacheBuster', "./songsSearch.component", "./editSong.component"], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,7 +9,7 @@ System.register(['angular2/core', 'angular2/router', '../cacheBuster', "./songsS
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, cacheBuster_1, songsSearch_component_1;
+    var core_1, router_1, cacheBuster_1, songsSearch_component_1, editSong_component_1;
     var SongsDashboardComponent;
     return {
         setters:[
@@ -25,23 +24,37 @@ System.register(['angular2/core', 'angular2/router', '../cacheBuster', "./songsS
             },
             function (songsSearch_component_1_1) {
                 songsSearch_component_1 = songsSearch_component_1_1;
+            },
+            function (editSong_component_1_1) {
+                editSong_component_1 = editSong_component_1_1;
             }],
         execute: function() {
             SongsDashboardComponent = (function () {
-                function SongsDashboardComponent() {
+                function SongsDashboardComponent(_router) {
+                    this._router = _router;
                 }
+                SongsDashboardComponent.prototype.newSong = function () {
+                    this._router.navigate(['EditSong', { id: null }]);
+                };
                 SongsDashboardComponent = __decorate([
                     router_1.RouteConfig([{
                             path: '/',
                             name: 'SongsSearch',
                             component: songsSearch_component_1.SongsSearchComponent,
                             useAsDefault: true
-                        }]),
+                        },
+                        {
+                            path: '/:id',
+                            name: 'EditSong',
+                            component: editSong_component_1.EditSongComponent
+                        }
+                    ]),
                     core_1.Component({
                         templateUrl: cacheBuster_1.getUrl('/views/songs/dashboard.html'),
+                        styleUrls: [cacheBuster_1.getUrl('/css/songs.css')],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router])
                 ], SongsDashboardComponent);
                 return SongsDashboardComponent;
             }());

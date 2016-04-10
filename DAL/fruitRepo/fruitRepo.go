@@ -17,6 +17,7 @@ func Delete(id bson.ObjectId) {
 
 //Insert f into collection
 func Insert(f models.Fruit) {
+	f.Id=bson.NewObjectId();
 	mongoDB.Insert(f, collectionName)
 }
 

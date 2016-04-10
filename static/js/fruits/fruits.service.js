@@ -1,6 +1,5 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_1, context_1) {
+System.register(['angular2/core', "../common/httpServices.service"], function(exports_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,51 +9,34 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, Rx_1;
+    var core_1, httpServices_service_1;
     var FruitService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
-            },
-            function (Rx_1_1) {
-                Rx_1 = Rx_1_1;
+            function (httpServices_service_1_1) {
+                httpServices_service_1 = httpServices_service_1_1;
             }],
         execute: function() {
             FruitService = (function () {
                 function FruitService(_http) {
                     this._http = _http;
+                    this.route = 'api/fruits';
                 }
-                FruitService.prototype.handleError = function (error) {
-                    // in a real world app, we may send the error to some remote logging infrastructure
-                    // instead of just logging it to the console
-                    console.error(error);
-                    return Rx_1.Observable.throw(error.json().error || 'Server error');
-                };
                 FruitService.prototype.save = function (fruit) {
-                    var body = JSON.stringify(fruit);
-                    var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-                    var options = new http_1.RequestOptions({ headers: headers });
-                    return this._http.post('/api/fruits', body, options).
-                        map(function (res) { return res.json().data; }).
-                        catch(this.handleError);
+                    return this._http.save(fruit, this.route);
                 };
                 FruitService.prototype.delete = function (id) {
-                    return this._http.delete('/api/fruits/' + id).
-                        map(function (res) { return res.json().data; }).
-                        catch(this.handleError);
+                    return this._http.delete(id, this.route);
                 };
                 FruitService.prototype.getFruits = function () {
-                    return this._http.get('/api/fruits').
-                        map(function (res) { return res.json(); }).
-                        catch(this.handleError);
+                    return this._http.get(this.route);
                 };
                 FruitService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [httpServices_service_1.HttpServices])
                 ], FruitService);
                 return FruitService;
             }());

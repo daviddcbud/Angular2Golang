@@ -8,11 +8,11 @@ export class FruitColorService
  colorStream:Observable<FruitColor[]>;
  colorObserver:Observer<FruitColor[]>;
 getColors(): Observable<FruitColor[]>{
-  var color: FruitColor;
+  var color=new FruitColor();
   color.id="123";
   color.name="Orange";
   this.colors.push(color);
-  var color: FruitColor;
+   color= new FruitColor();
   color.id="1243";
   color.name="Red";
   this.colors.push(color);

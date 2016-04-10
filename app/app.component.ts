@@ -3,6 +3,7 @@ import {RouteConfig,ROUTER_DIRECTIVES,ROUTER_PROVIDERS} from 'angular2/router';
 import {FruitMainComponent} from "./fruits/fruit.main.component";
 import {getUrl} from './cacheBuster';
 import {SongsDashboardComponent} from './songs/songDashboard.component';
+import {HttpServices} from "./common/httpServices.service";
 @RouteConfig([
   {
     path:'/fruits/...',
@@ -22,7 +23,7 @@ import {SongsDashboardComponent} from './songs/songDashboard.component';
   selector:'my-app',
   templateUrl:getUrl('views/index.html'),
   directives:[ROUTER_DIRECTIVES],
-  providers:[ROUTER_PROVIDERS]
+  providers:[ROUTER_PROVIDERS, HttpServices]
 })
 
 export class AppComponent

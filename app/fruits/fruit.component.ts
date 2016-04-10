@@ -33,7 +33,7 @@ editFruit(f:Fruit){
   this.goToFruit(f.id);
 }
   newFruit(){
-      this.goToFruit("");
+      this.goToFruit(null);
   }
 
   getFruits(){

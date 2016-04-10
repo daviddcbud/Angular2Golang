@@ -8,6 +8,7 @@ import (
 
 func init() {
 	beego.Router("/api/fruits/?:id", &controllers.FruitController{})
+	beego.Router("/api/songs/?:id", &controllers.SongsController{})
 	beego.Router("/*", &controllers.MainController{})
 
 }
