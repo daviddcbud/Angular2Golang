@@ -1,0 +1,6 @@
+<h2>Song Search</h2>
+<div class="form-group">
+  <input class="form-control" type="search" placeholder="search" [(ngModel)]="searchText"/>
+  <button (click)="search()" class="btn btn-primary">Search</button>
+</div>
+<spinner [enabled]="isSearching"></spinner>

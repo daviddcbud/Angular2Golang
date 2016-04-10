@@ -1,0 +1,9 @@
+<h2>Fruits</h2>
+<span class="glyphicon glyphicon-plus-sign" (click)="newFruit()" title="Add"></span>
+<div *ngFor="#f of fruits" >
+
+   <span class="glyphicon glyphicon-edit" (click)="editFruit(f)"></span>
+   <span class="glyphicon glyphicon-remove" (click)="deleteFruit(f)"></span>
+    {{f.name}}
+
+</div>
