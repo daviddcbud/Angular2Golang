@@ -21,6 +21,17 @@ func Insert(f models.Song) {
 	mongoDB.Insert(f, collectionName)
 }
 
+func SearchByName(name string) []models.Song {
+    sessionCopy, collection := mongoDB.GetCollection(collectionName)
+	defer sessionCopy.Close()
+	var songs []models.Song
+	err := collection.Find(bson.M{"name": bson.RegEx{name + ".*",""}}).All(&songs)
+	if err != nil {
+		log.Println(err)
+	}
+   log.Println(songs)
+	return songs
+}
 //Update f by id
 func Update(f models.Song) {
 

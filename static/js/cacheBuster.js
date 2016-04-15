@@ -1,7 +1,8 @@
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     function getUrl(url) {
-        var version = '1.11';
+        var version = '1.12';
         var returnUrl = url + '?v=' + version;
         return returnUrl;
     }

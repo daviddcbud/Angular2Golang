@@ -16,19 +16,19 @@ constructor(private _http:Http){
   }
 
 
-    save(data:any, url:string){
+    post(data:any, url:string){
       let body=JSON.stringify(data);
       let headers=new Headers({'Content-Type':'application/json'});
       let options= new RequestOptions({headers:headers});
 
       return this._http.post(url,body,options).
-      map(res=>res.json().data).
+      map(res=>res.json()).
       catch(this.handleError);
     }
     delete(id:string, url:string){
 
         return this._http.delete(url + '/' +  id).
-        map(res=>res.json().data).
+        map(res=>res.json()).
         catch(this.handleError);
     }
     

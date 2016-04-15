@@ -18,7 +18,7 @@ export  class EditSongComponent implements OnInit{
    }
    save(){
        this.isSaving=true;
-       this._http.save(this.song,this.route).subscribe(x=>{
+       this._http.post(this.song,this.route).subscribe(x=>{
            this.isSaving=false;
            
        });

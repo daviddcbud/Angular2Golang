@@ -11,7 +11,7 @@ constructor(private _http:HttpServices){
 }
  
     save(fruit:Fruit){
-      return this._http.save(fruit, this.route);
+      return this._http.post(fruit, this.route);
       
     }
     delete(id:string){

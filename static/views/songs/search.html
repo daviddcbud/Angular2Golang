@@ -4,3 +4,17 @@
   <button (click)="search()" class="btn btn-primary">Search</button>
 </div>
 <spinner [enabled]="isSearching"></spinner>
+
+<div *ngIf="songs.length > 0">
+    
+    <table class="table table-condensed">
+        <thead>
+            <th>Song</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="#song of songs">
+                <td>{{song.name}}</td>
+               </tr>
+        </tbody>
+    </table>
+</div>

@@ -13,6 +13,19 @@ import (
 type SongsController struct {
 	beego.Controller
 }
+type SearchOptions struct{
+    searchText string
+}
+
+func (this *SongsController) Search(){
+    options:= SearchOptions{}
+    json.Unmarshal(this.Ctx.Input.RequestBody, &options)
+    log.Printf("Searching %v", options.searchText)
+    var data=songRepo.SearchByName(options.searchText)
+    this.Data["json"] =&data
+    this.ServeJSON()    
+    
+}
 
 func (this *SongsController) Get() {
 	var data = songRepo.GetSongs()
