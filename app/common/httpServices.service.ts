@@ -35,6 +35,7 @@ constructor(private _http:Http){
     get(url:string){
       return this._http.get(url).
       map(res=>res.json()).
+      do(data=> console.log(JSON.stringify(data))).
       catch(this.handleError);
     }
 }
