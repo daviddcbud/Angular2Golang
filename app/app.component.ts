@@ -9,12 +9,13 @@ import {HttpServices} from "./common/httpServices.service";
     path:'/fruits/...',
     name:'Fruits',
     component:FruitMainComponent,
-    useAsDefault:true
+    useAsDefault:false
   },
   {
     path:'/songs/...',
     name:'Songs',
-    component:SongsDashboardComponent
+    component:SongsDashboardComponent,
+    useAsDefault:true
   }
 
 ])

@@ -1,3 +1,10 @@
 .song {
   font-weight: bold;
 }
+.song:hover{
+    cursor: pointer;
+    background-color: lightblue;
+}
+.selected{
+    background-color:lightgray;
+}

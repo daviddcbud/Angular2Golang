@@ -37,7 +37,7 @@ System.locate = function(load) {
     return address + System.cacheBust;
   });
 }
-System.cacheBust = '?bust=1.7';
+System.cacheBust = '?bust=1.11';
       System.import('js/main')
             .then(null, console.error.bind(console));
     </script>

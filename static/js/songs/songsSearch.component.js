@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../cacheBuster", '../common/spinner.component', "./songs.service"], function(exports_1) {
+System.register(["angular2/core", "../cacheBuster", '../common/spinner.component', "./songs.service", "angular2/router", "./songDetails.component"], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,7 +9,7 @@ System.register(["angular2/core", "../cacheBuster", '../common/spinner.component
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, cacheBuster_1, spinner_component_1, songs_service_1;
+    var core_1, cacheBuster_1, spinner_component_1, songs_service_1, router_1, songDetails_component_1;
     var SongsSearchComponent;
     return {
         setters:[
@@ -24,6 +24,12 @@ System.register(["angular2/core", "../cacheBuster", '../common/spinner.component
             },
             function (songs_service_1_1) {
                 songs_service_1 = songs_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (songDetails_component_1_1) {
+                songDetails_component_1 = songDetails_component_1_1;
             }],
         execute: function() {
             SongsSearchComponent = (function () {
@@ -32,6 +38,17 @@ System.register(["angular2/core", "../cacheBuster", '../common/spinner.component
                 }
                 SongsSearchComponent.prototype.ngOnInit = function () {
                     this.searchText = "testing";
+                };
+                SongsSearchComponent.prototype.closeDetails = function (song) {
+                    song.showDetails = false;
+                };
+                SongsSearchComponent.prototype.selectSong = function (song) {
+                    this.songs.forEach(function (s) {
+                        s.isSelected = false;
+                        s.showDetails = false;
+                    });
+                    song.isSelected = true;
+                    song.showDetails = true;
                 };
                 SongsSearchComponent.prototype.search = function () {
                     var _this = this;
@@ -44,8 +61,9 @@ System.register(["angular2/core", "../cacheBuster", '../common/spinner.component
                 SongsSearchComponent = __decorate([
                     core_1.Component({
                         templateUrl: cacheBuster_1.getUrl('/views/songs/search.html'),
-                        directives: [spinner_component_1.SpinnerComponent],
-                        providers: [songs_service_1.SongService]
+                        directives: [spinner_component_1.SpinnerComponent, router_1.ROUTER_DIRECTIVES, songDetails_component_1.SongDetailsComponent],
+                        providers: [songs_service_1.SongService],
+                        styleUrls: [cacheBuster_1.getUrl('css/songs.css')]
                     }), 
                     __metadata('design:paramtypes', [songs_service_1.SongService])
                 ], SongsSearchComponent);

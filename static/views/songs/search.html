@@ -3,6 +3,7 @@
   <input class="form-control" type="search" placeholder="search" [(ngModel)]="searchText"/>
   <button (click)="search()" class="btn btn-primary">Search</button>
 </div>
+v2
 <spinner [enabled]="isSearching"></spinner>
 
 <div *ngIf="songs && songs.length > 0">
@@ -12,9 +13,13 @@
             <th>Song</th>
         </thead>
         <tbody>
-            <tr *ngFor="#song of songs">
-                <td>{{song.name}}</td>
+            <tr class="song" [class.selected]="song.isSelected" *ngFor="#song of songs" (click)="selectSong(song)">
+                <td><a [routerLink]="['EditSong',{id:song.id}]">{{song.name}}</a></td>
+                <div *ngIf="song.showDetails">
+                <song-detail [song]="song" (closeMe)="closeDetails($event)"></song-detail>
+                </div>
                </tr>
         </tbody>
     </table>
+    
 </div>

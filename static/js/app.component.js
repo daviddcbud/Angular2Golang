@@ -41,12 +41,13 @@ System.register(['angular2/core', 'angular2/router', "./fruits/fruit.main.compon
                             path: '/fruits/...',
                             name: 'Fruits',
                             component: fruit_main_component_1.FruitMainComponent,
-                            useAsDefault: true
+                            useAsDefault: false
                         },
                         {
                             path: '/songs/...',
                             name: 'Songs',
-                            component: songDashboard_component_1.SongsDashboardComponent
+                            component: songDashboard_component_1.SongsDashboardComponent,
+                            useAsDefault: true
                         }
                     ]),
                     core_1.Component({

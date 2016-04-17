@@ -6,6 +6,10 @@
             Name is required
         </div>
     </div>
+    <div class="form=group">
+        <label>Artist</label>
+        <input type="text" class="form-control" [(ngModel)]="song.artist"/>
+    </div>
     <button class="btn btn-primary" (click)="save()" [disabled]="!my.form.valid">Save</button>
     <spinner [enabled]="isSaving"></spinner>
 </form>

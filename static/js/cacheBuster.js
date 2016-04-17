@@ -1,7 +1,7 @@
 System.register([], function(exports_1) {
     "use strict";
     function getUrl(url) {
-        var version = '1.13';
+        var version = '1.18';
         var returnUrl = url + '?v=' + version;
         return returnUrl;
     }
